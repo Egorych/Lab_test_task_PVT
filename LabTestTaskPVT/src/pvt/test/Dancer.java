@@ -54,7 +54,11 @@ public class Dancer {
 	public int dance() {
 		danceFloor.setSizeOfDanceFloor(dancerSequance.size());
 		if (isCanDance()) {
+			long startTime = System.currentTimeMillis();
 			for (int numberOfCurrentSteps : dancerSequance) {
+				if (System.currentTimeMillis() - startTime >= 1500) {
+					return -1;
+				}
 				if (numberOfCurrentSteps % 2 == 0 && numberOfCurrentSteps <= danceFloor.getSizeOfDanceFloor()) {
 					allSteps += numberOfCurrentSteps;
 					position += numberOfCurrentSteps;
