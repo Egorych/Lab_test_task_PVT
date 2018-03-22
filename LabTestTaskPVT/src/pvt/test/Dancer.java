@@ -51,4 +51,27 @@ public class Dancer {
 		return true;
 	}
 
+	public int dance() {
+		danceFloor.setSizeOfDanceFloor(dancerSequance.size());
+		if (isCanDance()) {
+			for (int numberOfCurrentSteps : dancerSequance) {
+				if (numberOfCurrentSteps % 2 == 0 && numberOfCurrentSteps <= danceFloor.getSizeOfDanceFloor()) {
+					allSteps += numberOfCurrentSteps;
+					position += numberOfCurrentSteps;
+				} else if (numberOfCurrentSteps % 2 == 0 && numberOfCurrentSteps >= danceFloor.getSizeOfDanceFloor()) {
+					allSteps += position;
+				} else if (numberOfCurrentSteps % 2 != 0 && numberOfCurrentSteps >= position) {
+					allSteps += position;
+					position = 0;
+					return allSteps;
+				} else if (numberOfCurrentSteps % 2 != 0 && numberOfCurrentSteps <= position) {
+					allSteps += numberOfCurrentSteps;
+					position -= numberOfCurrentSteps;
+				}
+
+			}
+		}
+		return allSteps;
+	}
+
 }
