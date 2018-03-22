@@ -21,13 +21,21 @@ public class DataInput {
 				if (strOfNumbers.length() != 0) {
 					if (strOfNumbersSplit.length < 51) {
 						for (String number : strOfNumbersSplit) {
-							try {
-								sequenceOfNumbers.add(Integer.parseInt(number));
-								flag = true;
-							} catch (NumberFormatException e) {
-								System.out.println("You have to enter only integers!!");
+							int numberToInt = Integer.parseInt(number);
+							if (numberToInt >= 0) {
+								try {
+									sequenceOfNumbers.add(Integer.parseInt(number));
+									flag = true;
+								} catch (NumberFormatException e) {
+									System.out.println("You have to enter only integers!!");
+									strOfNumbers = "";
+									flag = false;
+								}
+							} else {
+								System.out.println("The sequence can't include negative numbers! Try again");
 								strOfNumbers = "";
 								flag = false;
+								break;
 							}
 						}
 
