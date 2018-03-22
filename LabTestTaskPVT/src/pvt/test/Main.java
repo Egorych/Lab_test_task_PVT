@@ -3,7 +3,9 @@ package pvt.test;
 public class Main {
 
 	public static void main(String[] args) {
-		DataInput.sequenceReading();
+		Dancer dancer = new Dancer();
+		dancer.setDancerSequance(new DataInput().sequenceReading());
+		System.out.println(dancer.dance());
 	}
 
 }
